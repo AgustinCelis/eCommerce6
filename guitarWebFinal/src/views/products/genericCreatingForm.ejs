@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/products/creatingForms/generic.css" type="text/css">
+    <title>Creando <%=category.name%></title>
+    <script src="/js/previewImage.js"></script>
+</head>
+
+<body>
+    <main>
+        <form action="/products/create/<%=id%>" method="POST" enctype="multipart/form-data">
+            
+            <div class="product-name">
+                <label for="name"></label>
+                <input type="text" name="name" placeholder="Nombre"
+                value="<%=locals.oldData ? oldData.name : null%>"
+                    class="<%=locals.errors && errors.name ? 'invalid-field' : null%>">
+                    <% if (locals.errors && errors.name) { %>
+                        <div class="error">
+                            <%=errors.name.msg%>
+                        </div>
+                        <% } %>
+            </div>
+
+            <textarea name="description" maxlength="240" rows="4" cols="40" placeholder="Descripcion"></textarea> 
+            
+
+            <input class="price" type="number" name="price" placeholder="Precio"
+            value="<%=locals.oldData ? oldData.price : null%>"
+                    class="<%=locals.errors && errors.price ? 'invalid-field' : null%>">
+                    <% if (locals.errors && errors.price) { %>
+                        <div class="error">
+                            <%=errors.price.msg%>
+                        </div>
+                        <% } %> 
+
+            <div class="product-images">
+                <label for="product_images">Añadir imagenes del producto</label>
+                <input type="file" name="product_images" id="product_images" accept=".jpg, .png, .jpeg">
+                <div class="image-preview" id="imagePreview">
+                    <img src="" alt="image-preview" class="image-preview-image">
+                    <span class="image-preview-text">Vista previa</span>
+                </div>
+            </div>
+
+            <div class="categoria-select">
+                <label>Tipo de guitarra</label>
+                <select name="subcategory" class="sub-categoria">
+                    <option selected>Selecciona una subcategoria</option>
+                    <% for(let i = 0; i < category.subcategories.length; i++) { %>
+                        <option value="<%=i+1%>"><%=category.subcategories[i].name%></option>
+                    <% } %>    
+                </select>
+                <% if (locals.errors && errors.subcategory) { %>
+                    <div class="error">
+                        <%=errors.subcategory.msg%>
+                    </div>
+                <% } %>
+                
+            </div>
+
+            <div class="colores">
+                <label for="color_1">Añadir colores</label>
+                <input type="file" name="color_1" id="color_1" accept="image/*">
+                
+            </div>
+
+            <div class="cantidad-disponible-div">
+                <label for="available_amount">Cantidad disponible</label>
+                <input type="number" name="available_amount" placeholder="Cantidad" min="0"
+                value="<%=locals.oldData ? oldData.available_amount : null%>"
+                    class="<%=locals.errors && errors.available_amount ? 'invalid-field' : null%>">
+                    <% if (locals.errors && errors.available_amount) { %>
+                        <div class="error">
+                            <%=errors.available_amount.msg%>
+                        </div>
+                    <% } %>
+            </div>
+
+            <div class="characteristics-div">
+                <div class="characteristics">
+                    <label for="characteristic_1">Caracteristicas</label>
+                    <textarea name="characteristic_1" maxlength="240" rows="2" cols="20" placeholder="Caracteristica 1"
+                    value="<%=locals.oldData ? oldData.characteristic_1 : null%>"
+                    class="<%=locals.errors && errors.characteristic_1 ? 'invalid-field' : null%>">
+                    <% if (locals.errors && errors.characteristic_1) { %>
+                        <div class="error">
+                            <%=errors.characteristic_1.msg%>
+                        </div>
+                        <% } %></textarea> 
+                </div>
+            </div>
+
+            <% if(id == 1 || id == 3){ %> 
+            <div class="specifications-div">
+                <p class="specifications">
+                    <label for="specification_body">Especificacion cuerpo</label>
+                    <textarea name="specification_body" maxlength="240" rows="2" cols="20" placeholder="Especificacion cuerpo"></textarea>
+                    
+                </p>
+                <p class="specifications">
+                    <label for="specification_neck">Especificacion mastil</label>
+                    <textarea name="specification_neck" maxlength="240" rows="2" cols="20" placeholder="Especificacion mastil"></textarea>
+                    
+                    
+                </p>
+                <p class="specifications">  
+                    <label for="specification_accesorie">Especificacion accesorios</label>
+                    <textarea name="specification_accesorie" maxlength="240" rows="2" cols="20" placeholder="Especificacion accesorios"></textarea>
+                </p>
+            </div>
+                <% } %>
+
+            
+
+            <button type="submit">Enviar</button>
+
+        </form>
+    </main>
+</body>
+</html>

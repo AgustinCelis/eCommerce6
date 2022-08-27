@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('./partials/head') %>
+    <link rel="stylesheet" href="css/cartStyle.css" type="text/css">
+    <title>Carrito</title>
+    <!-- <script src="/js/cartScript.js"></script> -->
+</head>
+
+<body>
+    <%- include('./partials/navbar') %>
+    <main>
+        <%if(cart.length > 0){%>
+        <h1 class="cart-h1">Mi compra</h1>
+        <div class="main-container">
+            <section class="cart">
+                <div class="cart-container">
+                    <table class="tabla">
+                        <thead class="tabla-header">
+                            <tr>
+                                <th>Producto</th>
+                                <th>Precio Unitario</th>
+                                <th>Cantidad</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tabla-body">
+
+                            <%for(let i = 0; i < cart.length; i++){%>
+                            <tr>
+                                <td class="producto">
+                                    <div class="product-info">
+                                        <img class="product-img"
+                                            src="images/products/default/<%=cart[i].products.image_1%>">
+                                        <div class="product-name">
+                                            <p><%=cart[i].products.name%></p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="price-unitario">$<%=cart[i].products.price%></td>
+                                <td class="input">
+                                    <small>Disponibles: <span
+                                            id="available_amount"><%=cart[i].products.available_amount%></span></small>
+                                    <div>
+                                        <form action="/cart/subs/<%=cart[i].product_id%>?_method=PATCH&maxAmount=<%=cart[i].products.available_amount%>"
+                                            method="POST">
+                                            <button class="cantidad-menos" type="submit"><i
+                                                    class="fa-solid fa-minus"></i></button>
+                                            <input type="text" value="<%=cart[i].amount%>" id="product-amount"
+                                                name="amount">
+                                        </form>
+                                        <form
+                                            action="/cart/add/<%=cart[i].product_id%>?_method=PATCH&maxAmount=<%=cart[i].products.available_amount%>"
+                                            method="POST">
+                                            <input type="text" value="<%=cart[i].amount%>" id="product-amount"
+                                                name="amount">
+                                            <button class="cantidad-mas" type="submit"><i
+                                                    class="fa-solid fa-plus"></i></button>
+                                        </form>
+                                    </div>
+                                </td>
+                                <td class="price-total">$<%=(cart[i].products.price) * (cart[i].amount)%></td>
+                                <td class="eliminar">
+                                    <form action="/cart/delete/<%=cart[i].products.id%>?_method=DELETE" method="POST">
+                                        <button class="remove-button" type="submit">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <%}%>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section class="cart-total">
+                <div class="supremo-2">
+                    <h2 class="cart-total-h2">Resumen de compra</h2>
+                    <div class="cupones">
+                        <span class="texto-cupon">Si tenes un código de descuento ingresalo acá</span>
+                        <div class="insertar-cupon">
+                            <input class="input-cupon" type="text" id="cupon" placeholder="Código">
+                            <button type="submit" class="boton1">Aplicar</button>
+                        </div>
+                    </div>
+                    <form action="/cart/pay/" method="POST">
+                            <div class="tabla-total">
+                                <table class="total-tabla-align">
+                                    <tr>
+                                        <td>Subtotal:</td>
+                                        <td class="respuesta-tabla-total">$<%=total%></td>
+                            </tr>
+                            <tr>
+                                <td>Envio:</td>
+                                <td class="respuesta-tabla-total">Gratis</td>
+                            </tr>
+                            <tr>
+                                <td>Descuento:</td>
+                                <td class="respuesta-tabla-total">$0</td>
+                            </tr>
+                            <tr>
+                                <td class="grandota">Total:</td>
+                                <td class="grandota respuesta-tabla-total">$<%=total%></td>
+                            </tr>
+                    </table>
+                </div>
+                <div class="product-comprar">
+                    <button type="submit">Comprar ahora</button>
+                </div>
+                </form>
+                    <div class="seguir-comprando">
+                        <a href="/"><i class="fa-solid fa-angle-left"></i>Seguir comprando</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <%}else{%>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div>No hay productos en el carrito</div>
+        <%}%>
+    </main>
+</body>
+
+</html>

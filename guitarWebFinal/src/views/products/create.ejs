@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/products/createPivotStyle.css" type="text/css">
+    <title>Select a category</title>
+</head>
+
+<body>
+    <main>
+        <div class="main-div">
+            <% for(let i = 0; i < categories.length; i++) {%> 
+            <div class="">
+                <a href="/products/create/<%=categories[i].id%>">
+                    <%=categories[i].name%>
+                </a>
+            </div>
+            <%}%>
+
+        </div>
+    </main>
+</body>
+</html>

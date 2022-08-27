@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@100;200;300;400;600;700;800;900&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0 auto;
+  font-family: 'Montserrat', sans-serif;
+}
+  
+body {
+    background-color:white;
+    display: flex;
+    flex-direction: column;
+    color: #47525E;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 450px;
+    width: 100%;
+    background-color: rgb(233, 233, 233);
+    border-radius: 64px;
+}
+
+.main-container {
+    padding: 40px;
+}
+
+.logo-user {
+    text-align: center;
+}
+
+.logo-user i {
+    font-size: 50px;
+    color: #47525E;
+}
+
+.register-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+}
+
+.register-login a {
+    color: #47525E;
+    text-decoration: none;
+}
+
+.login-title {
+    margin: 0 10px;
+    font-size: 22px;
+    opacity: 0.5;
+}
+
+.register-title {
+    background-color: white;
+    font-size: 32px;
+    margin: 0;
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 18px;
+}
+
+.error{
+    color: red;
+    font-size: 12px;
+    text-align: left;
+    margin: 0;
+}
+
+.invalid-field{
+    border: 1px solid red;
+}
+
+form {
+    text-align: center;
+}
+
+form div {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto 20px;
+}
+
+form div label {
+    font-size: 18px;
+    font-weight: 700;
+    width: 100%;
+}
+
+form div input {
+    height: 38px;
+    padding: 0 5px;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    font-family: 'Montserrat', 'Nunito', sans-serif;
+    width: 100%;
+    border: 1px solid transparent;
+}
+
+form div input::placeholder {
+    font-family: 'Montserrat', 'Nunito', sans-serif;
+    opacity: 0.5;
+}
+
+.user-image label{
+    background-color: #47525E;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.user-image input{
+    display: none;
+}
+
+.terminos-condiciones{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 90%;
+}
+
+.terminos-condiciones label{
+    font-weight: 400;
+    font-size: 14px;
+    flex-grow: 1;
+    flex-basis: 85%;
+}
+.terminos-condiciones input{
+    flex-basis: 15%;
+    height: auto;
+    border: 0px solid transparent;
+    outline: none;
+}
+
+.boton-submit {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: #47525E;
+    font-weight: bold;
+    height: 44px;
+    margin: 5px 0 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 100ms linear;
+}
+
+.boton-submit:hover {
+    background-color: #38414b;
+}
+
+.boton-submit button {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    font-weight: 600;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    align-self: center;
+}
+
+.boton-submit:active {
+    transform: scale(0.98);
+}
+
+.container-signin{
+    margin: 20px auto 0;
+}
+
+.container-signin p{
+    text-align: center;
+    margin: 0;
+}
+
+.warningRegister{
+    color: red;
+}

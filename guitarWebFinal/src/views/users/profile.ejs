@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('../partials/head') %>
+    <link href="/css/users/profileStyle.css" rel="stylesheet">
+    <title>Profile</title>
+</head>
+<%- include('../partials/navbar') %>
+
+<body>
+    <section>
+        <div class="avatar">
+            <img src="/images/users/default/<%=user.avatar%>">
+        </div>
+        <div class="nombre">
+            <div>
+                <p>Nombre de usuario: <%=user.username%></p>
+            </div>
+        </div>
+            <div class="email">
+                <div>
+                    <p>Email: <%=user.email%></p>
+                </div>
+            </div>
+        </div>
+    <div class="card-body">
+        <span class="cerrar"><a href="/user/logout">Cerrar sesion</a></span>
+    </div>
+    </div>
+</section>
+</body>

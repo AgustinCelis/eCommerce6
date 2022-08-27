@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/products/detailStyle.css" type="text/css">
+    <title>Detalle</title>
+    <script src="/js/storingProductID.js"></script>
+</head>
+
+<body>
+    <%- include('../partials/navbar') %>
+    <main>
+        <p>ID: <a href="/products/detail/<%=product.id%>" id="productID"><%=product.id%></a></p>
+        <section class="producto">
+            <h1 class="product-title">
+                <%=(product.subcategories.name).toUpperCase()%> <br> <%=product.name.toUpperCase()%>
+            </h1>
+            <div class="product-extra-images">
+                <div class="extra-image">
+                    <a href="">
+                        <img src="/images/products/default/<%=product.image_2%>">
+                    </a>
+                </div>
+                <div class="extra-image">
+                    <a href="">
+                        <img src="/images/products/default/<%=product.image_3%>">
+                    </a>
+                </div>
+                <div class="extra-image">
+                    <a href="">
+                        <img src="/images/products/default/<%=product.image_4%>">
+                    </a>
+                </div>
+            </div>
+            <div class="product-image">
+                <a href="">
+                    <img src='/images/products/default/<%=product.image_1%>'>
+                </a>
+            </div>
+            <div class="producto-descripcion-precio-comprar">
+                <h2 class="product-title-inside-div">
+                    <%=(product.subcategories.name).toUpperCase()%> <br> <%=product.name.toUpperCase()%>
+                </h2>
+                <ul class="nav-carrousel">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <div class="product-price">
+                    <span>
+                        <%function numberWithCommas(price) {%>
+                        <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'); %>
+                        <% } %>
+                        <%=numberWithCommas(`$${product.price}`)%>
+                    </span>
+                </div>
+                <div class="product-description"><%=product.description%></div>
+                <!-- <div class="color">
+                    <p class="color-title">Color</p>
+                    <ul class="color-options">
+                        <li><img src="/images/guitarras/colores/colorAzul.png" alt="color blue"></li>
+                        <li><img src="/images/guitarras/colores/colorNaranja.png" alt="color naranja"></li>
+                        <li><img src="/images/guitarras/colores/colorNegro.png" alt="color negro"></li>
+                        <li><img src="/images/guitarras/colores/colorRojo.png" alt="color rojo"></li>
+                        <li><img src="/images/guitarras/colores/colorPerlaAzul.png" alt="color perla azul"></li>
+                    </ul>
+                </div> -->
+                <div class="product-comprar">
+                    <a href="">
+                        <button type="button">
+                            Comprar ahora
+                        </button>
+                    </a>
+                </div>
+                <form action="/cart/push/<%=product.id%>" method="POST" class="product-stock-disponible">
+                    <div class="product-stock-disponible">
+                        <div class="product-agregar-carrito">
+                            <button type="submit">
+                                Agregar al carrito
+                            </button>
+                        </div>
+                        <span>(<%=product.available_amount%> disponibles)</span>
+                        <div class="product-cantidad">
+                            <select name="amount">
+                                <%for(let i = 1; i <= product.available_amount; i++){%>
+                                <option value="<%=i%>"><%=i%></option>
+                                <%}%>
+                        </select>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </section>
+        <section class="caracteristicas-especificaciones">
+            <div class="caracteristicas">
+                <h2 class="caracteristicas-title">Caracteristicas</h2>
+                <div class="caracteristicas-list">
+                </div>
+            </div>
+            <div class="especificaciones">
+                <h2 class="especificaciones-title">Especificaciones</h2>
+                <ul class="especificaciones-list">
+                    <h3 class="especificaciones-list-titulo">Cuerpo</h3>
+                    <ul class="especifcaciones-list-cuerpo">
+                        <li><%=product.specification_body%></li>
+                                </ul>
+                                <h3 class="especificaciones-list-titulo">Mastil</h3>
+                                <ul class="especifcaciones-list-mastil">
+                                    <li><%=product.specification_neck%></li>
+                                </ul>
+                                <h3 class="especificaciones-list-titulo">Accesorios</h3>
+                                <ul class="especifcaciones-list-accesorios">
+                                    <li><%=product.specification_accesorie%></li>
+                                </ul>
+
+                                </ul>
+        </section>
+        <section class="productos-similares">
+            <span class="similares-title">Productos similares</span>
+            <ul class="similares-list">
+                <li>
+                    <div class="similar-product">
+                        <a href="/producto/detalle">
+                            <img src="/images/guitarras/electricas-display/flyingv.png">
+                            <div class="similar-product-descripcion">
+                                <span>Lorem ipsum</span>
+                            </div>
+                    </div>
+                    </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="similar-product">
+                        <a href="/producto/detalle">
+                            <img src="/images/guitarras/electricas-display/prs.png">
+                            <div class="similar-product-descripcion">
+                                <span>Lorem ipsum</span>
+                            </div>
+                    </div>
+                    </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="similar-product">
+                        <a href="/producto/detalle">
+                            <img src="/images/guitarras/electricas-display/lespaul.png">
+                            <div class="similar-product-descripcion">
+                                <span>Lorem ipsum</span>
+                            </div>
+                    </div>
+                    </a>
+                    </div>
+                </li>
+                <li>
+                    <div class="similar-product">
+                        <a href="/products/<%=product.id%>">
+                            <img src="/images/guitarras/electricas-display/superstrat.png">
+                            <div class="similar-product-descripcion">
+                                <span>Lorem ipsum</span>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+    <link rel="stylesheet" href="/css/products/productsListStyle.css" type="text/css">
+    <title>Listado de producto</title>
+</head>
+
+<body>
+    <%- include('../partials/navbar') %>
+    <main>
+        <div class="guitars-container">
+            <% for(let i = 0; i < products.length; i++) {%>
+            <div class="guitar guitar-<%=products[i].id%>">
+                <a href="/products/detail/<%=products[i].id%>">
+                <img src="/images/products/default/<%=products[i].image_1%>">
+                <div class="guitar-name"><%=products[i].subcategories.name%></div>
+                <div class="guitar-name"><%=products[i].name%></div>
+                </a>
+            </div>
+            <% } %>
+        </div>
+    </main>
+</body>
+
+</html>

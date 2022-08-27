@@ -1,0 +1,130 @@
+/* General settings */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+html, body{
+    height: 100vh;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#root {
+    height: 100%;
+    background-color: #F7F6F9;
+    display: flex;
+    flex-direction: column;
+}
+/* General settings */
+
+/*Topbar settings*/
+.topbar{
+   background-color: white;
+   display: flex;
+   justify-content: flex-end;
+   height: 50px;
+}
+
+.topbar-flex{
+    display: flex;
+    justify-content: flex-end;
+    width: calc(100% - 256px);
+}
+
+.topbar-user {
+    display: flex;
+    align-items: center;
+    margin-right: 56px;
+}
+
+.fai-user{
+    margin-right: 5px;
+    color: #373737;
+}
+
+.topbar-user span {
+    color: #373737;
+    font-size: 14px;
+}
+
+/*Topbar settings*/
+
+/*Sidebar settings*/
+.sidebar{
+    width: 256px;
+    height: 100%;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 2px solid #F7F6F9;
+}
+
+.sidebar-logo{
+    width: 100%;
+    text-align: center;
+    border-bottom: 2px solid #F7F6F9;
+}
+
+.fai-logo {
+    font-size: 50px;
+    color: #373737;
+    z-index: 1001;
+}
+
+.sidebar-list {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 5px 2px 5px -2px rgba(0, 0, 0, 0.431);
+}
+
+.sidebar-pages-list{
+    list-style-type: none;
+    padding: 0;
+    margin-top: 50px;
+    width: 90%;
+}
+
+.sidebar-pages-list li {
+    padding: 2px;
+    margin: 0 0 10px 0;
+}
+
+.sidebar-pages-list li span {
+    color: #373737;
+}
+
+.fai-sidebar{
+    width: 24px;
+    color: #373737;;
+}
+
+.sidebar-pages-span{
+    margin-top: 30px;
+}
+/*Sidebar settings*/
+
+/*Products page settings*/
+.products-container{
+    margin-left: 256px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.products-detail {
+    background-color: white;
+    border-radius: 5px;
+    width: 80%;
+}
+/*Products page settings*/
