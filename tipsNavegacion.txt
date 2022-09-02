@@ -3,3 +3,5 @@
 - Se recomienda crear un usuario.
 
 - En general, el proyecto Express esta en localhost:4000 y la dashboard React esta en localhost:3000, de no ser asi puede generar problemas con la navegacion entre los 2 dominios.
+
+- En el app.use(secret...) (en el archivo app.js), se usaron variables de entorno para que funcione, en caso de crashear el servidor culpa de esto, configurar para que funcione correctamente.
