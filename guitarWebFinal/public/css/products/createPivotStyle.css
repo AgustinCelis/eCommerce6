@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  background-color:white;
+  background-image: linear-gradient(#F7F6F9 50%, white 50%);
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -38,11 +38,12 @@ main{
     align-items: center;
     justify-content: center;
     text-align: center;
-    transition: all 200ms ease-in-out;
+    transition: all 300ms ease-in-out;
+    box-shadow: none;
 }
 
 .main-div div:hover {
-    transform: scale(1.1);
+    box-shadow: 0 5px 16px 0 rgb(0 0 0 / 20%);
 }
 
 .main-div div a {

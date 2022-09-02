@@ -1,0 +1,5 @@
+- Para que funcione la api se tiene que hacer "npm start" en los 2 proyectos, a demas de abrir el servidor XAMPP.
+
+- Se recomienda crear un usuario.
+
+- En general, el proyecto Express esta en localhost:4000 y la dashboard React esta en localhost:3000, de no ser asi puede generar problemas con la navegacion entre los 2 dominios.

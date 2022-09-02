@@ -61,6 +61,7 @@ const controller = {
             price: product.price,
             total: product.price * req.body.amount
         }
+
         if (productInCart) {
             return res.redirect('/cart')
         } else {

@@ -33,9 +33,7 @@ const controller = {
                 delete userToLogin.password;
                 req.session.userLogged = userToLogin;
                 if (req.body.remember_user) {
-                    res.cookie('email', userToLogin.email, {
-                        maxAge: 1000 * 86400
-                    });
+                    res.cookie('email', userToLogin.email);
                 };
                 return res.redirect('/');
             };
@@ -129,16 +127,25 @@ const controller = {
             active: 1,
         };
 
-        db.Users.create(userToRegister);
+        await db.Users.create(userToRegister);
 
-        delete userToRegister.password
-        delete userToRegister.active
+        let userRegistered = await db.Users.findOne({
+            where: {
+                [Op.and]: [{
+                        username: (req.body.username).toLowerCase()
+                    },
+                    {
+                        email: (req.body.email).toLowerCase()
+                    }
+                ]
+            }
+        })
+        .then(user => {
+            delete user.password
+            return user
+        })
 
-        req.session.userLogged = userToRegister;
-
-        res.cookie('email', req.body.email, {
-            maxAge: 1000 * 86400
-        });
+        req.session.userLogged = userRegistered;
 
         return res.redirect('/');
     },

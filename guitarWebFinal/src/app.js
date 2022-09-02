@@ -4,6 +4,8 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 const cookies = require('cookie-parser');
 
+require('dotenv').config()
+
 const app = express();
 
 //MIDDLEWARES PROPIOS
@@ -17,12 +19,17 @@ const rutaUsers = require('./routes/users');
 
 // RUTAS APIs
 const apiProducts = require('./routes/api/productsApi');
+const apiUsers = require('./routes/api/usersApi');
 
 // MIDDLEWARES
 app.use(session({
-    secret: 'guitarWebSecret',
+    secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        maxAge: parseInt(process.env.SESSION_MAX_AGE)
+    }
 }));
 
 app.set('view engine', 'ejs');
@@ -39,9 +46,11 @@ app.use(cookies());
 app.use(userLoggedMiddleware);
 
 // RUTEO
-app.listen(process.env.PORT || 4000, () =>{
-    console.log('Server on port 4000');
-});
+app.set('port', process.env.PORT || 4000);
+
+app.listen(app.get('port'), ()=>{
+    console.log(`Server on port ${app.get('port')}`);
+})
 
 app.use('/', rutaHome);
 
@@ -52,6 +61,8 @@ app.use('/', rutaCart);
 app.use('/', rutaUsers);
 
 app.use('/', apiProducts)
+
+app.use('/', apiUsers)
 
 app.use((req, res)=>{
     res.status(404).render('error404');

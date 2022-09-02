@@ -31,7 +31,7 @@ async function userLoggedMiddleware(req, res, next) {
                         id: user.id,
                         username: user.username,
                         avatar: user.avatar,
-                        role: user.role_id
+                        role_id: user.role_id
                     };
                 }
             })
@@ -40,9 +40,9 @@ async function userLoggedMiddleware(req, res, next) {
 
         if (userFromCookie) {
             req.session.userLogged = userFromCookie;
+            res.locals.userLogged = req.session.userLogged;
         };
     }
-
 
     next();
 };

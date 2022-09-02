@@ -3,7 +3,7 @@
 
 <head>
     <%- include('../partials/head') %>
-    <link rel="stylesheet" href="/css/products/createProductStyle.css" type="text/css">
+    <link rel="stylesheet" href="/css/products/creatingForms/generic.css" type="text/css">
     <title>Carrito</title>
 </head>
 
@@ -11,38 +11,18 @@
     <main>
         <form action="/products/edit/<%=product.id%>?_method=PUT" method="POST" enctype="multipart/form-data">
 
-            <input type="text" name="name" value="<%=product.name : ""%>">
+            <input type="text" name="name" value="<%=product.name%>">
 
             <textarea name="description" maxlength="240" rows="4" cols="40"><%=product.description%></textarea>
 
-            <input type="number" name="price" value="<%=product.price>
+            <input type="number" name="price" value="<%=product.price%>">
 
             <div class="product-images">
                 <label for="product-images">Añadir imagenes del producto</label>
                 <input type="file" name="product_images" id="product-images" accept="image/*" multiple>
             </div>
-
-            <div class="precio-oferta">
-                <input type="checkbox" name="precio-oferta-check">
-                <input type="number" name="price-sale" placeholder="Precio oferta">
-            </div> 
-
-            <div class="categoria-select">
-                <label>Categoria: </label>
-                <select name="categoria" class="categoria">
-                    <option value="1">Eléctricas</option>
-                </select>
-                <br> 
-                <label>Tipo de guitarra</label>
-                <select name="type_of_guitar" class="sub-categoria">
-                    <option value="eletrica">Stratocaster</option>
-                    <option value="acustica">Telecaster</option>
-                    <option value="bajos">Paul Reed Smith</option>
-                    <option value="amplificacion">Solid Guitar</option>
-                    <option value="accesorio">Les Paul</option>
-                    <option value="repuesto">Superstrat</option>
-                </select>
-            </div>
+            
+            <br>
 
             <div class="colores">
                 <label for="imagenes-colores">Añadir colores</label>

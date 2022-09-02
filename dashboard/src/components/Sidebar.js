@@ -1,10 +1,10 @@
-import {Link} from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faChartLine, faLayerGroup, faUserCheck, faBandage } from '@fortawesome/free-solid-svg-icons';
+import { faChartSimple, faLayerGroup, faUserCheck, faBandage } from '@fortawesome/free-solid-svg-icons';
 
 function Sidebar(){
+
     return(
-        <>
         <nav className='sidebar'>
             <div className='sidebar-logo'>
                 <a href='/'>
@@ -14,25 +14,24 @@ function Sidebar(){
             <div className='sidebar-list'>
                 <ul className='sidebar-pages-list'>
                     <li>
-                        <Link to='/'>
-                            <span><FontAwesomeIcon icon={faChartLine} className="fai-main fai-sidebar"/>  Main</span>
-                        </Link>
+                        <NavLink to='/' exact activeClassName='active' className="li-background">
+                            <span className='link-span'><FontAwesomeIcon icon={faChartSimple} className="fai-main fai-sidebar"/>  Main</span>
+                        </NavLink>
                     </li>
                     <p className='sidebar-pages-span'>PAGES</p>
                     <li>
-                        <Link to='/Products'>
-                            <span><FontAwesomeIcon icon={faLayerGroup} className="fai-products fai-sidebar"/>  Products</span>
-                        </Link>
+                        <NavLink to='/Products' exact activeClassName='active' className="li-background">
+                            <span className='link-span'><FontAwesomeIcon icon={faLayerGroup} className="fai-products fai-sidebar"/>  Products</span>
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to='/LastestInDb'>
-                            <span><FontAwesomeIcon icon={faUserCheck} className='fai-lastindb fai-sidebar'/>  Last product & user</span>
-                        </Link>
+                        <NavLink to='/LastInDb' exact activeClassName='active' className="li-background">
+                            <span className='link-span'><FontAwesomeIcon icon={faUserCheck} className='fai-lastindb fai-sidebar'/>  Last product & user</span>
+                        </NavLink>
                     </li>
                 </ul>       
             </div> 
         </nav> 
-        </>
     )
 };
 

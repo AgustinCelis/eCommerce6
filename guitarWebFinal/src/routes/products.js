@@ -71,6 +71,6 @@ router.delete('/products/delete/:id', productsController.processDelete);
 
 //Lista de todos los productos
 router.get('/products', productsController.showMainList);
-router.get('/products/:id', productsController.showMainList);
+router.get('/products/:id?', productsController.showMainList);
 
 module.exports = router;

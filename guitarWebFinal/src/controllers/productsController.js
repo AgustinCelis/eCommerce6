@@ -101,11 +101,11 @@ const controller = {
     },
     // EDICION DE PRODUCTOS
     processEditProduct: function (req, res) {
-        // TRABAJAR ACA LAS VALIDACIONES DE BACKEND DE CREACION DE PRODUCTO
+        return res.redirect('/')
+        // TRABAJAR ACA LAS VALIDACIONES DE BACKEND DE EDICION DE PRODUCTO
     },
     // VISTA DE LISTADO DE PRODUCTOS
     showMainList: async function (req, res) {
-
         if(req.params && req.params.id){
             let products = await db.Products.findAll({
                 include: [{
@@ -121,6 +121,10 @@ const controller = {
                 .then(products => {
                     return products
                 })
+
+            if(products.length == 0){
+                return res.status(404).render('error404')
+            }
     
             return res.status(200).render('products/mainList', {
                 products
@@ -150,24 +154,23 @@ const controller = {
         .then(product =>{
             return product
         })
-        
-        if(product){
-            res.send(`Seguro que queres eliminar el producto: ${product.name}?`)
-        }else{
-            res.send(`El producto con id ${req.params.id} no existe`)
-        }  
+
+        return res.status(200).render('products/delete', {
+            product,
+            idProduct: req.params.id
+        })
     },
     // SUPRESION DE PRODUCTOS
     processDelete: async function (req, res) {
         await db.Products.update({
             active: 0
-        },{
+        }, {
             where: {
                 id: req.params.id
             }
         })
 
-        return res.redirect('/')
+        return res.redirect('/home')
     },
 };
 

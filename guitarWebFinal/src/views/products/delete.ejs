@@ -5,13 +5,13 @@
     <title>Eliminar</title>
 </head>
 <body>
-    <form action="/products/delete/<%=idProduct%>?_method=DELETE" method="POST" enctype="multipart/form-data">
-        <%if(jsonData.find(product => product.id == idProduct) == undefined){%>
-            <label for="">No existe el producto con ID <%=idProduct%></label>
+        <%if(product == null){%>
+            <p>No existe el producto con ID <%=idProduct%></p>
         <%}else{%>
-            <label for="">Seguro que queres eliminar el producto con ID: <%=idProduct%>?</label>
-            <button type="submit">Borrar</button>
+            <p>Seguro que queres eliminar el producto con ID: <%=product.id%>?</p>
+            <form action="/products/delete/<%=product.id%>?_method=DELETE" method="POST" enctype="multipart/form-data">
+                <button type="submit">Borrar</button>
+            </form>
         <%}%>    
-    </form>
 </body>
 </html>

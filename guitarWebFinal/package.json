@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/app.js"
+    "start": "start http://localhost:4000 & nodemon src/app.js "
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,8 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.2",
     "ejs": "^3.1.7",
     "express": "^4.17.3",
     "express-session": "^1.17.3",

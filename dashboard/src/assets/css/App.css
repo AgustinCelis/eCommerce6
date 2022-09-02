@@ -25,13 +25,14 @@ html, body{
    background-color: white;
    display: flex;
    justify-content: flex-end;
-   height: 50px;
 }
 
 .topbar-flex{
     display: flex;
     justify-content: flex-end;
     width: calc(100% - 256px);
+    height: 50px;
+    box-shadow: 1px 0px 5px rgb(100 100 100 / 50%);
 }
 
 .topbar-user {
@@ -84,7 +85,7 @@ html, body{
     display: flex;
     align-items: center;
     flex-direction: column;
-    box-shadow: 5px 2px 5px -2px rgba(0, 0, 0, 0.431);
+    box-shadow: 1px 5px 5px rgb(100 100 100 / 50%);
 }
 
 .sidebar-pages-list{
@@ -95,26 +96,42 @@ html, body{
 }
 
 .sidebar-pages-list li {
-    padding: 2px;
     margin: 0 0 10px 0;
-}
-
-.sidebar-pages-list li span {
-    color: #373737;
+    width: 100%;
+    display: flex;
 }
 
 .fai-sidebar{
     width: 24px;
-    color: #373737;;
 }
 
 .sidebar-pages-span{
     margin-top: 30px;
 }
+
+.active{
+    background-color: #1996F4;
+}
+
+.active span{
+    color: white;
+}
+
+.link-span {
+    color:#373737;
+}
+
+.li-background{
+    width: 100%;
+    padding: 5px;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
 /*Sidebar settings*/
 
 /*Products page settings*/
-.products-container{
+.main-container-products{
     margin-left: 256px;
     height: 100%;
     display: flex;
@@ -123,8 +140,211 @@ html, body{
 }
 
 .products-detail {
-    background-color: white;
     border-radius: 5px;
     width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.title h2 {
+    font-size: 32px;
+}
+
+.button-style {
+    background-color: #1996F4;
+    border-radius: 5px;
+    width: 150px;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    margin: 15px 0 20px 0;
+}
+
+.tabla {
+    background-color: #f7f6f9;
+    text-align: left;
+    border-collapse: collapse;
+    color: #373737;
+}
+
+.tabla-header {
+    width: 100%;
+    background-color: white;
+    outline: thin solid white;
+    border-radius: 5px;
+}
+
+.tabla-header tr th {
+    font-size: 16px;
+    padding: 10px;
+}
+
+.tabla-header tr th div {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.faChevronDown{
+    padding-left: 5px;
+    font-size: 11px;
+}
+
+.table-separator{
+    height: 10px;
+    color: #F7F6F9;
+    width: 100%;
+}
+
+.tabla-body {
+    background-color: white;
+    width: 100%;
+    outline: thin solid white;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.td-product {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.tabla-body tr {
+    position: relative;
+}
+
+.tabla-body tr td{
+    font-size: 16px;
+    padding: 10px;
+}
+
+.img {
+    height: 85px;
+    width: auto;
+}
+
+.product-active div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: #42B873;
+}
+
+.product-inactive div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: #fb8a8c;
+}
+
+.active-dot {
+    height: 7px;
+    width: 7px;
+    background-color: #42B873;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 3px;
+}
+
+.inactive-dot {
+    height: 7px;
+    width: 7px;
+    background-color: #fb8a8c;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 3px;
+}
+
+
+
+.faPen {
+    text-decoration: none;
+    color: #57AEF8;
+    background-color: #EBF7FE;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.faTrash {
+    height: 16px;
+    width: 16px;
+    text-decoration: none;
+    padding-right: 30px;
+    color: #FB8A8C;
+    background-color: #FFE5E6;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.faPen:hover{
+    background-color: #57AEF8;
+    color: #EBF7FE;
+    transition: 200ms ease-in-out;
+}
+
+.faTrash:hover{
+    background-color: #FB8A8C;
+    color: #FFE5E6;
+    transition: 200ms ease-in-out;
+}
+
+.product-tr:before{
+    display: block;
+    content: "";
+    position: absolute;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 90%;
+    border-bottom: 1px solid #E0E0E0;
 }
 /*Products page settings*/
+
+/* LastInDb page settings */
+.main-container-lidb{
+    margin-left: 256px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.lidb-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.lidb-div {
+    text-align: center;
+    margin: 0 30px;
+}
+
+.div-title{
+    font-size: 32px;
+    font-weight: 700;
+    color: #373737;
+}
+
+.div-user-product {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.div-img{
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+}
